@@ -1,0 +1,15 @@
+{
+"name": "Yucadiax PWA — Demo",
+"short_name": "Yucadiax PWA",
+"start_url": "/",
+"scope": "/",
+"display": "standalone",
+"orientation": "portrait-primary",
+"background_color": "#0b1b2b",
+"theme_color": "#12b886",
+"description": "PWA React sin backend: CSR + SSG, offline, notificaciones y device APIs.",
+"icons": [
+{ "src": "/icons/icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" },
+{ "src": "/icons/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any" }
+]
+}
