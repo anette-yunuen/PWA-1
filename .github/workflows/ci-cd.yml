@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI/CD Blue-Green
 
 on:
   push:
@@ -35,19 +35,27 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
-  deploy:
+  deploy-green:
     needs: build-and-push
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to VPS
+      - name: Deploy new version to GREEN and switch traffic
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /srv/apps/integradora-pwa
+            set -e
+
+            echo "Desplegando nueva versión en GREEN..."
+            cd /srv/apps/integradora-green
             docker compose pull
             docker compose up -d
+
+            echo "Cambiando tráfico a GREEN..."
+            sudo SERVER_NAME="_" /usr/local/bin/switch-green.sh
+
+            echo "Limpieza de imágenes antiguas..."
             docker image prune -f
