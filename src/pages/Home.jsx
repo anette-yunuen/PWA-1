@@ -21,7 +21,7 @@ const sendNotification = async () => {
 
   const tag = `demo-${Date.now()}`; 
   await reg.showNotification('Notificación nueva: ' + new Date().toLocaleTimeString(), {
-    body: 'Notificación de prueba Yucadiax....',
+    body: 'Notificación de prueba Yucadiax',
     icon: '/icons/icon-192.svg',
     tag,
     requireInteraction: false,
