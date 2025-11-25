@@ -34,7 +34,7 @@ const sendNotification = async () => {
 return (
 <div className="grid">
 <section className="card">
-<h2>Bienvenido </h2>
+<h2>Bienvenido seas </h2>
 <p>Esta PWA cumple: Splash+Home, CSR+SSG, offline, notificaciones y APIs de dispositivo.</p>
 <button className="btn" onClick={sendNotification}>Probar Notificación</button>
 </section>
