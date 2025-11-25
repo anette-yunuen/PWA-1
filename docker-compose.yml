@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   pwa:
-    image: ghcr.io/${GITHUB_REPOSITORY}:latest
+    image: ghcr.io/anette-yunuen/pwa1:latest    
     container_name: integradora-pwa
     restart: unless-stopped
     ports:
