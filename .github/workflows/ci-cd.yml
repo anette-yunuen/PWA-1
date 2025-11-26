@@ -55,7 +55,7 @@ jobs:
             docker compose up -d
 
             echo "Cambiando tráfico a GREEN..."
-            sudo SERVER_NAME="_" /usr/local/bin/switch-green.sh
+            SERVER_NAME="_" /usr/local/bin/switch-green.sh
 
             echo "Limpieza de imágenes antiguas..."
             docker image prune -f
