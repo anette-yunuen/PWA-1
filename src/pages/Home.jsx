@@ -12,7 +12,7 @@ Notification.requestPermission()
 
 // Enviar notificación de prueba
 const sendNotification = async () => {
-  if (!('serviceWorker' in navigator) || !('Notification' in window)) return;
+  if (!('serviceWorker' in navigator) || !('Notificationn' in window)) return;
   if (Notification.permission !== 'granted') {
     const p = await Notification.requestPermission();
     if (p !== 'granted') return;
