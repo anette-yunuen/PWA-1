@@ -13,7 +13,7 @@ return (
 <Splash />
 <header>
 <div className="container nav">
-<strong>Yucadiax PWA</strong>
+<strong>Yucadiaxxxx PWA</strong>
 <NavLink to="/" end>Home</NavLink>
 <NavLink to="/tasks">Tareas (CSR)</NavLink>
 <NavLink to="/ssg">Acerca (SSG)</NavLink>

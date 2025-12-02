@@ -14,7 +14,7 @@ try {
 const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
 videoRef.current.srcObject = stream
 await videoRef.current.play()
-} catch(err){ alert('No se pudo acceder a la cámara: ' + err.message) }
+} catch(err){ alert('No se pudo acceder a la cámaraa: ' + err.message) }
 }
 
 

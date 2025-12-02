@@ -20,7 +20,7 @@ const sendNotification = async () => {
   const reg = await navigator.serviceWorker.ready;
 
   const tag = `demo-${Date.now()}`; 
-  await reg.showNotification('Notificación nueva: ' + new Date().toLocaleTimeString(), {
+  await reg.showNotification('Notificación nuevaa: ' + new Date().toLocaleTimeString(), {
     body: 'Notificación de prueba Yucadiax',
     icon: '/icons/icon-192.svg',
     tag,

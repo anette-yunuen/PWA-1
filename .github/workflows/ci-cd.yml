@@ -1,8 +1,16 @@
-name: CI/CD
+name: CI/CD Blue-Green
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "¿A qué color quieres desplegar?"
+        required: true
+        default: "green"
+        type: choice
+        options:
+          - blue
+          - green
 
 env:
   REGISTRY: ghcr.io
@@ -40,14 +48,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@master
+      - name: Deploy to BLUE or GREEN on VPS
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
           script: |
-            cd /srv/apps/integradora-pwa
-            docker compose pull
-            docker compose up -d
+            set -e
+
+            echo "TARGET recibido: ${{ github.event.inputs.target }}"
+
+            if [ "${{ github.event.inputs.target }}" = "blue" ]; then
+              echo "Desplegando en BLUE..."
+              cd /srv/apps/integradora-blue
+              docker compose pull
+              docker compose up -d
+
+              echo "Cambiando tráfico a BLUE..."
+              SERVER_NAME="_" /usr/local/bin/switch-blue.sh
+
+            else
+              echo "Desplegando en GREEN..."
+              cd /srv/apps/integradora-green
+              docker compose pull
+              docker compose up -d
+
+              echo "Cambiando tráfico a GREEN..."
+              SERVER_NAME="_" /usr/local/bin/switch-green.sh
+            fi
+
+            echo "Limpiando imágenes viejas..."
             docker image prune -f
