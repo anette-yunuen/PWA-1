@@ -6,7 +6,6 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-# Cambia "build" por "build" o "dist" según tu script
 RUN npm run build
 
 # Fase 2: servir estático con Nginx
