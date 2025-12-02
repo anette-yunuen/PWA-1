@@ -39,7 +39,7 @@ return (
 <button className="btn" onClick={sendNotification}>Probar Notificación</button>
 </section>
 <section className="card">
-<h3>Instalación como App</h3>
+<h3>Instalación comooooo App</h3>
 <p>Aún no disponible</p>
 </section>
 </div>
