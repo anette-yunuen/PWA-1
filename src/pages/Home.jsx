@@ -35,7 +35,7 @@ return (
 <div className="grid">
 <section className="card">
 <h2>Bienvenido seas </h2>
-<p>Esta PWA cumple: Splash+Home, CSR+SSG, offline, notificaciones y APIs de dispositivo.</p>
+<p>Esta PWA cumple xcon lo siguiente: Splash+Home, CSR+SSG, offline, notificaciones y APIs de dispositivo.</p>
 <button className="btn" onClick={sendNotification}>Probar Notificación</button>
 </section>
 <section className="card">
