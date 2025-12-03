@@ -6,7 +6,7 @@ describe('Pruebas de integración de la API', () => {
     const res = await request(app).get('/health');
 
     expect(res.statusCode).toBe(200);
-    expect(res.body).toHaveProperty('status', 'ok');
+    expect(res.body).toHaveProperty('status', 'oksss');
     expect(res.body).toHaveProperty('service', 'yucadiax-api');
   });
 
